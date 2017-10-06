@@ -8,18 +8,15 @@ class App extends Component {
     super(props);
     this.state = {
       isLoading: true
-    }
+    };
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+        <h1 className="App-title">Flick Search App</h1>
         <p className="App-intro">
-          <DisplayFlickrImage/>
+          <DisplayFlickrImage />
         </p>
       </div>
     );
