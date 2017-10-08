@@ -1,33 +1,14 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { GridList, GridTile } from 'material-ui/GridList';
+import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import flickrService from '../constants/flickrService';
 import Image from './Image';
 import ProgressBar from './ProgressBar';
 import SearchBox from './SearchBox';
-import TextField from 'material-ui/TextField';
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around'
-  },
-  gridList: {
-    width: 800,
-    height: 450,
-    overflowX: 'auto'
-  }
-};
-const searchUrl =
-  'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ccc40fa2d0e400ea13fae765dea404ba&format=json&nojsoncallback=1&per_page=10&text=';
-const baseUrl =
-  'https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=ccc40fa2d0e400ea13fae765dea404ba';
-const apiUrl = baseUrl + '&per_page=10&format=json&nojsoncallback=1';
-const imgUrl =
-  'https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=ccc40fa2d0e400ea13fae765dea404ba&format=json&nojsoncallback=1&photo_id=';
 
 class DisplayFlickrImage extends Component {
   constructor(props) {
@@ -41,10 +22,11 @@ class DisplayFlickrImage extends Component {
   }
 
   componentDidMount() {
+    this.setState({ isLoading: false, photos: [] });
     this.fetchPhotos();
   }
   fetchPhotos() {
-    return fetch(searchUrl + this.state.searchKey)
+    return fetch(flickrService.apiCompleteSearchUrl + this.state.searchKey)
       .then(results => results.json())
       .then(data => {
         if (data.photos != undefined) {
@@ -98,16 +80,13 @@ class DisplayFlickrImage extends Component {
               value={this.state.searchKey}
               onChange={(e, newValue) => {
                 this.setState({ searchKey: newValue });
-                console.log(newValue);
                 this.componentDidMount();
               }}
-              name="searchKey"
-              fullWidth={false}
             />
             <br />
             <br />
-            <div style={styles.root}>
-              <GridList cols={5} style={styles.gridList}>
+            <div style={flickrService.styles.root}>
+              <GridList cols={5} style={flickrService.styles.gridList}>
                 {this.state.photos}
               </GridList>
             </div>

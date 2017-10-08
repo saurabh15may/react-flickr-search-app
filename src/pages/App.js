@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import DisplayFlickrImage from './DisplayFlickrImage';
+import DisplayFlickrImage from '../components/DisplayFlickrImage';
 import './App.css';
 
 class App extends Component {
@@ -10,7 +9,6 @@ class App extends Component {
       isLoading: true
     };
   }
-
   render() {
     return (
       <div className="App">

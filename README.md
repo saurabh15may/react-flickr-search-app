@@ -9,14 +9,14 @@ You will find some information on how to perform common tasks [here](https://git
 #### Install dependencies for the application
 >npm install
 
-#### Build and package the application
->npm run build
-
 #### Run the project on local
 >npm start
 
 #### Test the project on local
 >npm test
+
+#### Build and package the application
+>npm run build
 
 #### The application is deployed to AWS S3 (URL below)
 https://react-flickr-app.s3-ap-southeast-2.amazonaws.com/index.html
