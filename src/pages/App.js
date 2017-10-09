@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import DisplayFlickrImage from '../components/DisplayFlickrImage';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Card } from 'material-ui/Card';
+import FlickrSearch from '../components/FlickrSearch';
 import './App.css';
 
 class App extends Component {
@@ -12,10 +14,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className="App-title">Flick Search App</h1>
-        <p className="App-intro">
-          <DisplayFlickrImage />
-        </p>
+        <h1 className="App-title">Flickr Image Search App</h1>
+        <MuiThemeProvider>
+          <Card>
+            <FlickrSearch />
+          </Card>
+        </MuiThemeProvider>
       </div>
     );
   }
