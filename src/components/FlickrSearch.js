@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
+import { debounce } from 'throttle-debounce';
 import flickrService from '../constants/flickrService';
 import ImageGridList from './ImageGridList';
 import ImageGridTile from './ImageGridTile';
@@ -54,7 +55,7 @@ class FlickrSearch extends Component {
           value={this.state.searchKey}
           onChange={(e, newValue) => {
             this.setState({ searchKey: newValue });
-            this.fetchPhotos();
+            debounce(200, this.fetchPhotos());
           }}
         />
         <br />
