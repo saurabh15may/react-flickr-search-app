@@ -5,6 +5,8 @@ const apiFormat = '&format=json&nojsoncallback=1&safe_search=1&content_type=1';
 const apiCompleteSearchUrl =
   apiSearchUrl + apiKey + apiFormat + '&per_page=24&text=';
 
+const imgBaseUrl = 'https://farm5.staticflickr.com';
+
 const styles = {
   root: {
     display: 'flex',
@@ -19,6 +21,7 @@ const styles = {
 
 const flickrService = {
   apiCompleteSearchUrl: apiCompleteSearchUrl,
+  imgBaseUrl: imgBaseUrl,
   styles: styles
 };
 
